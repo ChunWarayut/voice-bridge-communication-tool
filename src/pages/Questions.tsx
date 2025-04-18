@@ -3,9 +3,10 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
-import { 
+import {
   HelpCircle, Calendar, Clock, Home, Heart, MapPin, User, Users
 } from 'lucide-react';
+import BouncyButton from '@/components/BouncyButton';
 
 interface QuestionOption {
   key: string;
@@ -28,8 +29,8 @@ const Questions = () => {
   ];
 
   const handleSelect = (question: string) => {
-    // speak(t(question), language);
-    speak(translations[question]["th"], language);
+    speak(t(question), language, question);
+    // speak(translations[question]["th"], language);
   };
 
   return (
@@ -38,16 +39,19 @@ const Questions = () => {
         {questions.map((question) => {
           const Icon = question.icon;
           return (
-            <button 
-              key={question.key}
-              className="sv-option-button text-left"
-              onClick={() => handleSelect(question.key)}
-            >
-              <div className="flex flex-col items-center w-full">
-                <img src={`questions/${question.key}.png`} alt={question.key} /> {/* Changed from Image to img */}
-                <span className="text-lg font-medium text-center">{t(question.key)}</span>
-              </div>
-            </button>
+            <BouncyButton>
+              <button
+                key={question.key}
+                className="sv-option-button text-left"
+                onClick={() => handleSelect(question.key)}
+              >
+                <div className="flex flex-col items-center w-full">
+                  <img src={`questions/${question.key}.png`} alt={question.key} /> {/* Changed from Image to img */}
+                  <span className="text-lg font-medium text-center">{t(question.key)}</span>
+                  <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[question.key]["th"]}</span>
+                </div>
+              </button>
+            </BouncyButton>
           );
         })}
       </div>

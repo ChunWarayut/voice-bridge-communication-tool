@@ -17,9 +17,9 @@ const Pain = () => {
   const handlePartSelect = (part: BodyPart) => {
     setSelectedPart(part);
     setStep('painScale');
-    // speak(t(part), language);
+    speak(t(part), language, part);
 
-    speak(translations[part]["th"], language);
+    // speak(translations[part]["th"], language);
   };
 
   // Handle pain scale selection
@@ -36,14 +36,14 @@ const Pain = () => {
     } else {
       painText = 'severePain';
     }
-    // speak(painText, language);
-    speak(translations[painText]["th"], language);
+    speak(painText, language, painText);
+    // speak(translations[painText]["th"], language, painText);
     
     setTimeout(() => {
       setStep('bodyMap');
       setSelectedPart(null);
       setPainLevel(null);
-    }, 100);
+    }, 1500);
   };
 
   return (
@@ -169,6 +169,7 @@ const Pain = () => {
                 <Smile size={48} className="text-green-600 mb-2" />
                 <span className="text-xl font-bold">0</span>
                 <span className="text-sm">{t('noPain')}</span>
+                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['noPain']["th"]}</span>
               </button>
               
               {/* Mild Pain (1-3) */}
@@ -179,6 +180,7 @@ const Pain = () => {
                 <SmilePlus size={48} className="text-yellow-600 mb-2" />
                 <span className="text-xl font-bold">1-3</span>
                 <span className="text-sm">{t('mildPain')}</span>
+                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['mildPain']["th"]}</span>
               </button>
               
               {/* Moderate Pain (4-6) */}
@@ -189,6 +191,7 @@ const Pain = () => {
                 <Meh size={48} className="text-orange-600 mb-2" />
                 <span className="text-xl font-bold">4-6</span>
                 <span className="text-sm">{t('moderatePain')}</span>
+                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['moderatePain']["th"]}</span>
               </button>
               
               {/* Severe Pain (7-10) */}
@@ -199,6 +202,7 @@ const Pain = () => {
                 <Frown size={48} className="text-red-600 mb-2" />
                 <span className="text-xl font-bold">7-10</span>
                 <span className="text-sm">{t('severePain')}</span>
+                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['severePain']["th"]}</span>
               </button>
             </div>
           </>

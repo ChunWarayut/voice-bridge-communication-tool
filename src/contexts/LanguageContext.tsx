@@ -14,6 +14,11 @@ export interface Translations {
 
 // Create basic translations
 const translations: Translations = {
+  youCanTellUsYourNeeds:{
+    en: 'You can tell us your needs by pressing the following options.',
+    th: 'คุณสามารถบอกความต้องการของคุณด้วยการกดตัวเลือกดังต่อไปนี้',
+    my: 'အောက်ပါရွေးချယ်စရာများကို နှိပ်ခြင်းဖြင့် သင့်လိုအပ်ချက်များကို ကျွန်ုပ်တို့အား ပြောပြနိုင်ပါသည်။'
+  },
   appTitle: {
     en: 'Smart Voice',
     th: 'สมาร์ทวอยซ์',

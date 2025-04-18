@@ -2,9 +2,9 @@ import { SupportedLanguage } from '../contexts/LanguageContext';
 
 // Speech synthesis voices for each language
 const languageVoices: Record<SupportedLanguage, string[]> = {
-  en: ['th-TH'], // Use Thai voices for English UI
+  en: ['en-US', 'en-GB', 'en-AU'],
   th: ['th-TH'],
-  my: ['th-TH'], // Use Thai voices for Burmese UI
+  my: ['my', 'my-MM'],
 };
 
 // Helper to get the best available voice for a language
@@ -14,22 +14,35 @@ const getBestVoiceForLanguage = (lang: SupportedLanguage): SpeechSynthesisVoice 
   const voices = window.speechSynthesis.getVoices();
   if (!voices.length) return null;
 
-  // Always try to find a Thai voice first
-  const thaiVoice = voices.find(voice => voice.lang.startsWith('th-TH'));
-  if (thaiVoice) return thaiVoice;
-  
-  // If no Thai voice found, fallback to original language mapping logic
+  // Try to find a voice matching our preferred language codes
   for (const langCode of languageVoices[lang]) {
     const matchedVoice = voices.find(voice => voice.lang.startsWith(langCode));
     if (matchedVoice) return matchedVoice;
   }
 
-  // Last resort: use any available voice
-  return voices[0];
+  // Fallback options
+  if (lang === 'my') {
+    // If no Burmese voice, try to use Thai as a fallback
+    for (const langCode of languageVoices.th) {
+      const fallbackVoice = voices.find(voice => voice.lang.startsWith(langCode));
+      if (fallbackVoice) return fallbackVoice;
+    }
+  }
+
+  // Last resort: use any English voice
+  return voices.find(voice => voice.lang.startsWith('en')) || voices[0];
 };
 
 // Main speak function
-export const speak = (textOrKey: string, language: SupportedLanguage, isTranslationKey: boolean = false): void => {
+export const speak = (text: string, language: SupportedLanguage, key: string): void => {
+
+  if (language === 'my') {
+    const sanitizedText = text.replace(/\s+/g, '_').toLowerCase();
+    const audio = new Audio(`/audio/my/${key}.mp3`);
+    audio.play();
+    return;
+  }
+
   if (!window.speechSynthesis) {
     console.error('Speech synthesis not supported in this browser');
     return;
@@ -38,30 +51,25 @@ export const speak = (textOrKey: string, language: SupportedLanguage, isTranslat
   // Cancel any ongoing speech
   window.speechSynthesis.cancel();
 
-  // If it's a translation key, we'll use the translation from the context
-  const text = isTranslationKey 
-    ? (window as any).__languageContext?.t(textOrKey) || textOrKey 
-    : textOrKey;
-
   // Create a new utterance
   const utterance = new SpeechSynthesisUtterance(text);
   
-  // Always use Thai voice
+  // Load voices if not already loaded
   let voices = window.speechSynthesis.getVoices();
   if (!voices.length) {
     // If voices aren't loaded yet, wait for them and try again
     window.speechSynthesis.onvoiceschanged = () => {
-      utterance.voice = getBestVoiceForLanguage('th');
+      utterance.voice = getBestVoiceForLanguage(language);
       window.speechSynthesis.speak(utterance);
     };
     return;
   }
 
-  // Set the voice to Thai and speak
-  utterance.voice = getBestVoiceForLanguage('th');
+  // Set the voice and speak
+  utterance.voice = getBestVoiceForLanguage(language);
   
   // Adjust settings for clarity
-  utterance.rate = 0.9;
+  utterance.rate = 0.9; // Slightly slower for better comprehension
   utterance.pitch = 1;
   utterance.volume = 1;
   

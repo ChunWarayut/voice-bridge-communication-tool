@@ -3,10 +3,11 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
-import { 
-  MoveHorizontal, Bed, Users, GlassWater, Utensils, Stethoscope, 
+import {
+  MoveHorizontal, Bed, Users, GlassWater, Utensils, Stethoscope,
   Lightbulb, Home, Shirt, Minimize2, Spline, Droplet, Bath, Unlink, Component
 } from 'lucide-react';
+import BouncyButton from '@/components/BouncyButton';
 
 interface NeedOption {
   key: string;
@@ -36,9 +37,8 @@ const Needs = () => {
   ];
 
   const handleSelect = (need: string) => {
-    // speak(need, language, true);
-
-    speak(translations[need]["th"], language, true);
+    speak(need, language, need);
+    // speak(translations[need]["th"], language, true);
   };
 
   return (
@@ -47,14 +47,17 @@ const Needs = () => {
         {needs.map((need) => {
           const Icon = need.icon;
           return (
-            <button 
-              key={need.key}
-              className="sv-option-button"
-              onClick={() => handleSelect(need.key)}
-            >
-              <img src={`needs/${need.key}.png`} alt={need.key} /> {/* Changed from Image to img */}
-              <span className="text-lg font-medium">{t(need.key)}</span>
-            </button>
+            <BouncyButton>
+              <button
+                key={need.key}
+                className="sv-option-button"
+                onClick={() => handleSelect(need.key)}
+              >
+                <img src={`needs/${need.key}.png`} alt={need.key} /> {/* Changed from Image to img */}
+                <span className="text-xs font-medium">{t(need.key)}</span>
+                <span className={`text-xs font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[need.key]["th"]}</span>
+              </button>
+            </BouncyButton>
           );
         })}
       </div>

@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
 import { Thermometer, Snowflake, Moon, X, Droplets, Waves, Coffee, ThumbsUp } from 'lucide-react';
+import BouncyButton from '@/components/BouncyButton';
 
 interface FeelingOption {
   key: string;
@@ -26,8 +27,8 @@ const Feelings = () => {
   ];
 
   const handleSelect = (feeling: string) => {
-    // speak(t(feeling), language);
-    speak(translations[feeling]["th"], language);
+    speak(t(feeling), language, feeling);
+    // speak(translations[feeling]["th"], language);
   };
 
   return (
@@ -36,14 +37,17 @@ const Feelings = () => {
         {feelings.map((feeling) => {
           const Icon = feeling.icon;
           return (
-            <button
-              key={feeling.key}
-              className="sv-option-button"
-              onClick={() => handleSelect(feeling.key)}
-            >
-              <img src={`feelings/${feeling.key}.png`} alt={feeling.key} /> {/* Changed from Image to img */}
-              <span className="text-lg font-medium">{t(feeling.key)}</span>
-            </button>
+            <BouncyButton>
+              <button
+                key={feeling.key}
+                className="sv-option-button"
+                onClick={() => handleSelect(feeling.key)}
+              >
+                <img src={`feelings/${feeling.key}.png`} alt={feeling.key} /> {/* Changed from Image to img */}
+                <span className="text-xs font-medium">{t(feeling.key)}</span>
+                <span className={`text-xs font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[feeling.key]["th"]}</span>
+              </button>
+            </BouncyButton>
           );
         })}
       </div>

@@ -3,9 +3,10 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
-import { 
+import {
   Church, Music, Heart, Landmark
 } from 'lucide-react';
+import BouncyButton from '@/components/BouncyButton';
 
 interface BeliefOption {
   key: string;
@@ -24,8 +25,8 @@ const Beliefs = () => {
   ];
 
   const handleSelect = (belief: string) => {
-    // speak(t(belief), language);
-    speak(translations[belief]["th"], language);
+    speak(t(belief), language, belief);
+    // speak(translations[belief]["th"], language);
   };
 
   return (
@@ -34,14 +35,17 @@ const Beliefs = () => {
         {beliefs.map((belief) => {
           const Icon = belief.icon;
           return (
-            <button 
-              key={belief.key}
-              className="sv-option-button min-h-[150px]"
-              onClick={() => handleSelect(belief.key)}
-            >
-              <img src={`beliefs/${belief.key}.png`} alt={belief.key} /> {/* Changed from Image to img */}
-              <span className="text-lg font-medium">{t(belief.key)}</span>
-            </button>
+            <BouncyButton>
+              <button
+                key={belief.key}
+                className="sv-option-button min-h-[150px]"
+                onClick={() => handleSelect(belief.key)}
+              >
+                <img src={`beliefs/${belief.key}.png`} alt={belief.key} /> {/* Changed from Image to img */}
+                <span className="text-xs font-medium">{t(belief.key)}</span>
+                <span className={`text-xs font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[belief.key]["th"]}</span>
+              </button>
+            </BouncyButton>
           );
         })}
       </div>
