@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Define our supported languages
@@ -236,7 +235,7 @@ const translations: Translations = {
   howLong: {
     en: 'How long will I be treated?',
     th: 'ฉันจะได้รับการรักษานานแค่ไหน?',
-    my: 'ကျွန်ုပ်ကိုဘယ်လောက်ကြာကြာကုသမလဲ?',
+    my: 'ကျွန်ုပ်ကိုဘယ်လောက်ကြာကုသမလဲ?',
   },
   whenHome: {
     en: 'When can I go home?',
@@ -276,13 +275,79 @@ const translations: Translations = {
   },
   trustMedicalTeam: {
     en: 'I trust the medical team',
-    th: 'ฉันเชื่อมั่นในทีมแพทย์',
+    th: 'ฉันเ��ื่อมั่นในทีมแพทย์',
     my: 'ကျွန်ုပ်ဆေးဝါးကုသမှုအဖွဲ့ကိုယုံကြည်ပါသည်',
   },
   religiousRitual: {
     en: 'I want to perform a religious ritual',
     th: 'ฉันต้องการประกอบพิธีทางศาสนา',
     my: 'ကျွန်ုပ်ဘာသာရေးဝတ်ပြုလိုသည်',
+  },
+  // Body parts translations
+  head: {
+    en: 'Head',
+    th: 'ศีรษะ',
+    my: 'ခေါင်း',
+  },
+  eye: {
+    en: 'Eye',
+    th: 'ตา',
+    my: 'မျက်လုံး',
+  },
+  ear: {
+    en: 'Ear',
+    th: 'หู',
+    my: 'နား',
+  },
+  arm: {
+    en: 'Arm',
+    th: 'แขน',
+    my: 'လက်မောင်း',
+  },
+  hand: {
+    en: 'Hand',
+    th: 'มือ',
+    my: 'လက်',
+  },
+  leg: {
+    en: 'Leg',
+    th: 'ขา',
+    my: 'ခြေထောက်',
+  },
+  hair: {
+    en: 'Hair',
+    th: 'ผม',
+    my: 'ဆံပင်',
+  },
+  nose: {
+    en: 'Nose',
+    th: 'จมูก',
+    my: 'နှာခေါင်း',
+  },
+  mouth: {
+    en: 'Mouth',
+    th: 'ปาก',
+    my: 'ပါးစပ်',
+  },
+  neck: {
+    en: 'Neck',
+    th: 'คอ',
+    my: 'လည်ပင်း',
+  },
+  chest: {
+    en: 'Chest',
+    th: 'หน้าอก',
+    my: 'ရင်ဘတ်',
+  },
+  stomach: {
+    en: 'Stomach',
+    th: 'ท้อง',
+    my: 'ဗိုက်',
+  },
+  feet: {
+    en: 'Feet',
+    th: 'เท้า',
+    my: 'ခြေထောက်',
   },
 };
 
