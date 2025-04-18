@@ -1,17 +1,14 @@
-
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
 import { Frown, Meh, SmilePlus, Smile } from 'lucide-react';
 
 // Define the body parts that can be selected
-type BodyPart = 'head' | 'chest' | 'abdomen' | 'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg' | 'back' | null;
+type BodyPart = 'head' | 'eye' | 'ear' | 'arm' | 'hand' | 'leg' | 'hair' | 'nose' | 'mouth' | 'neck' | 'chest' | 'stomach' | 'feet' | null;
 
 const Pain = () => {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
   const [selectedPart, setSelectedPart] = useState<BodyPart>(null);
   const [painLevel, setPainLevel] = useState<number | null>(null);
   const [step, setStep] = useState<'bodyMap' | 'painScale'>('bodyMap');
@@ -20,27 +17,13 @@ const Pain = () => {
   const handlePartSelect = (part: BodyPart) => {
     setSelectedPart(part);
     setStep('painScale');
-    
-    // Speak the selected part
-    let partText = '';
-    switch(part) {
-      case 'head': partText = 'Head'; break;
-      case 'chest': partText = 'Chest'; break;
-      case 'abdomen': partText = 'Abdomen'; break;
-      case 'leftArm': partText = 'Left Arm'; break;
-      case 'rightArm': partText = 'Right Arm'; break;
-      case 'leftLeg': partText = 'Left Leg'; break;
-      case 'rightLeg': partText = 'Right Leg'; break;
-      case 'back': partText = 'Back'; break;
-    }
-    speak(partText, language);
+    speak(t(part), language);
   };
 
   // Handle pain scale selection
   const handlePainLevelSelect = (level: number) => {
     setPainLevel(level);
     
-    // Speak the pain level
     let painText = '';
     if (level === 0) {
       painText = t('noPain');
@@ -53,17 +36,11 @@ const Pain = () => {
     }
     speak(painText, language);
     
-    // Reset after a delay to allow selecting another part
     setTimeout(() => {
       setStep('bodyMap');
       setSelectedPart(null);
       setPainLevel(null);
     }, 3000);
-  };
-
-  // Get class for body part based on selection
-  const getPartClass = (part: BodyPart) => {
-    return `sv-body-map-part ${selectedPart === part ? 'fill-sv-red' : ''}`;
   };
 
   return (
@@ -73,19 +50,93 @@ const Pain = () => {
           <>
             <h2 className="text-2xl font-bold mb-8">{t('whereIsYourPain')}</h2>
             
-            <div className="w-full max-w-md">
-              <svg viewBox="0 0 200 400" className="w-full h-auto">
-                {/* Simple human body outline */}
-                <circle cx="100" cy="50" r="30" className={getPartClass('head')} onClick={() => handlePartSelect('head')} />
-                <rect x="70" y="80" width="60" height="80" className={getPartClass('chest')} onClick={() => handlePartSelect('chest')} />
-                <rect x="70" y="160" width="60" height="60" className={getPartClass('abdomen')} onClick={() => handlePartSelect('abdomen')} />
-                <rect x="40" y="80" width="30" height="100" className={getPartClass('leftArm')} onClick={() => handlePartSelect('leftArm')} />
-                <rect x="130" y="80" width="30" height="100" className={getPartClass('rightArm')} onClick={() => handlePartSelect('rightArm')} />
-                <rect x="70" y="220" width="30" height="120" className={getPartClass('leftLeg')} onClick={() => handlePartSelect('leftLeg')} />
-                <rect x="100" y="220" width="30" height="120" className={getPartClass('rightLeg')} onClick={() => handlePartSelect('rightLeg')} />
-                <rect x="40" y="340" width="120" height="40" rx="5" className={getPartClass('back')} onClick={() => handlePartSelect('back')} />
-                <text x="100" y="360" textAnchor="middle" className="fill-current text-white font-semibold">Back</text>
-              </svg>
+            <div className="w-full max-w-md relative">
+              <img 
+                src="/lovable-uploads/65f01617-6996-435e-beb0-c30080a4f251.png" 
+                alt="Body map" 
+                className="w-full h-auto"
+              />
+              
+              {/* Interactive regions for each body part */}
+              <div className="absolute inset-0">
+                {/* Head region */}
+                <button 
+                  onClick={() => handlePartSelect('head')}
+                  className="absolute top-[5%] left-[45%] w-[10%] h-[10%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Hair region */}
+                <button 
+                  onClick={() => handlePartSelect('hair')}
+                  className="absolute top-[2%] left-[42%] w-[16%] h-[8%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Eye region */}
+                <button
+                  onClick={() => handlePartSelect('eye')}
+                  className="absolute top-[8%] left-[38%] w-[8%] h-[8%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Ear region */}
+                <button
+                  onClick={() => handlePartSelect('ear')}
+                  className="absolute top-[15%] left-[35%] w-[8%] h-[8%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Nose region */}
+                <button
+                  onClick={() => handlePartSelect('nose')}
+                  className="absolute top-[15%] right-[42%] w-[8%] h-[8%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Mouth region */}
+                <button
+                  onClick={() => handlePartSelect('mouth')}
+                  className="absolute top-[22%] right-[40%] w-[10%] h-[8%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Neck region */}
+                <button
+                  onClick={() => handlePartSelect('neck')}
+                  className="absolute top-[30%] right-[42%] w-[12%] h-[8%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Chest region */}
+                <button
+                  onClick={() => handlePartSelect('chest')}
+                  className="absolute top-[35%] right-[42%] w-[15%] h-[12%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Stomach region */}
+                <button
+                  onClick={() => handlePartSelect('stomach')}
+                  className="absolute top-[48%] right-[42%] w-[15%] h-[12%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Left arm region */}
+                <button
+                  onClick={() => handlePartSelect('arm')}
+                  className="absolute top-[35%] left-[30%] w-[10%] h-[20%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Left hand region */}
+                <button
+                  onClick={() => handlePartSelect('hand')}
+                  className="absolute top-[40%] left-[25%] w-[10%] h-[10%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Legs region */}
+                <button
+                  onClick={() => handlePartSelect('leg')}
+                  className="absolute bottom-[15%] left-[45%] w-[12%] h-[25%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+                
+                {/* Feet region */}
+                <button
+                  onClick={() => handlePartSelect('feet')}
+                  className="absolute bottom-[5%] left-[45%] w-[12%] h-[10%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
+                />
+              </div>
             </div>
           </>
         ) : (
