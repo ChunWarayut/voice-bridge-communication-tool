@@ -36,7 +36,7 @@ const Needs = () => {
   ];
 
   const handleSelect = (need: string) => {
-    speak(t(need), language);
+    speak(need, language, true);
   };
 
   return (
@@ -61,3 +61,4 @@ const Needs = () => {
 };
 
 export default Needs;
+

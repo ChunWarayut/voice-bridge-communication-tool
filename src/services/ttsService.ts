@@ -1,4 +1,3 @@
-
 import { SupportedLanguage } from '../contexts/LanguageContext';
 
 // Speech synthesis voices for each language
@@ -30,7 +29,7 @@ const getBestVoiceForLanguage = (lang: SupportedLanguage): SpeechSynthesisVoice 
 };
 
 // Main speak function
-export const speak = (text: string, language: SupportedLanguage): void => {
+export const speak = (textOrKey: string, language: SupportedLanguage, isTranslationKey: boolean = false): void => {
   if (!window.speechSynthesis) {
     console.error('Speech synthesis not supported in this browser');
     return;
@@ -39,25 +38,30 @@ export const speak = (text: string, language: SupportedLanguage): void => {
   // Cancel any ongoing speech
   window.speechSynthesis.cancel();
 
+  // If it's a translation key, we'll use the translation from the context
+  const text = isTranslationKey 
+    ? (window as any).__languageContext?.t(textOrKey) || textOrKey 
+    : textOrKey;
+
   // Create a new utterance
   const utterance = new SpeechSynthesisUtterance(text);
   
-  // Always use Thai voice regardless of UI language
+  // Always use Thai voice
   let voices = window.speechSynthesis.getVoices();
   if (!voices.length) {
     // If voices aren't loaded yet, wait for them and try again
     window.speechSynthesis.onvoiceschanged = () => {
-      utterance.voice = getBestVoiceForLanguage('th'); // Always use Thai voice
+      utterance.voice = getBestVoiceForLanguage('th');
       window.speechSynthesis.speak(utterance);
     };
     return;
   }
 
   // Set the voice to Thai and speak
-  utterance.voice = getBestVoiceForLanguage('th'); // Always use Thai voice
+  utterance.voice = getBestVoiceForLanguage('th');
   
   // Adjust settings for clarity
-  utterance.rate = 0.9; // Slightly slower for better comprehension
+  utterance.rate = 0.9;
   utterance.pitch = 1;
   utterance.volume = 1;
   
