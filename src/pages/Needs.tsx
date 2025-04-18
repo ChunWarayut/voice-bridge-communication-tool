@@ -1,0 +1,63 @@
+
+import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { speak } from '../services/ttsService';
+import Layout from '../components/Layout';
+import { 
+  MoveHorizontal, Bed, Users, GlassWater, Utensils, Stethoscope, 
+  Lightbulb, Home, Shirt, Minimize2, Spline, Droplet, Bath, Unlink, Component
+} from 'lucide-react';
+
+interface NeedOption {
+  key: string;
+  icon: React.ElementType;
+  color: string;
+}
+
+const Needs = () => {
+  const { t, language } = useLanguage();
+
+  const needs: NeedOption[] = [
+    { key: 'changePosition', icon: MoveHorizontal, color: 'text-purple-500' },
+    { key: 'blanket', icon: Bed, color: 'text-blue-300' },
+    { key: 'seeRelatives', icon: Users, color: 'text-green-500' },
+    { key: 'drinkWater', icon: GlassWater, color: 'text-blue-500' },
+    { key: 'eat', icon: Utensils, color: 'text-yellow-500' },
+    { key: 'seeDoctor', icon: Stethoscope, color: 'text-red-500' },
+    { key: 'turnLights', icon: Lightbulb, color: 'text-yellow-400' },
+    { key: 'goHome', icon: Home, color: 'text-green-600' },
+    { key: 'changeClothes', icon: Shirt, color: 'text-indigo-500' },
+    { key: 'adjustBed', icon: Minimize2, color: 'text-gray-500' },
+    { key: 'suction', icon: Spline, color: 'text-teal-500' },
+    { key: 'urinate', icon: Droplet, color: 'text-yellow-300' },
+    { key: 'defecate', icon: Bath, color: 'text-brown-500' },
+    { key: 'untieHands', icon: Unlink, color: 'text-orange-500' },
+    { key: 'removeBreathingTube', icon: Component, color: 'text-red-600' }
+  ];
+
+  const handleSelect = (need: string) => {
+    speak(t(need), language);
+  };
+
+  return (
+    <Layout title={t('needs')}>
+      <div className="sv-category-grid my-6">
+        {needs.map((need) => {
+          const Icon = need.icon;
+          return (
+            <button 
+              key={need.key}
+              className="sv-option-button"
+              onClick={() => handleSelect(need.key)}
+            >
+              <Icon size={36} className={`${need.color} mb-2`} />
+              <span className="text-lg font-medium">{t(need.key)}</span>
+            </button>
+          );
+        })}
+      </div>
+    </Layout>
+  );
+};
+
+export default Needs;

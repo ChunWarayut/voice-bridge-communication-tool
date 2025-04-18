@@ -1,0 +1,57 @@
+
+import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { speak } from '../services/ttsService';
+import Layout from '../components/Layout';
+import { 
+  HelpCircle, Calendar, Clock, Home, Heart, MapPin, User, Users
+} from 'lucide-react';
+
+interface QuestionOption {
+  key: string;
+  icon: React.ElementType;
+  color: string;
+}
+
+const Questions = () => {
+  const { t, language } = useLanguage();
+
+  const questions: QuestionOption[] = [
+    { key: 'whatsWrong', icon: HelpCircle, color: 'text-red-500' },
+    { key: 'whatDay', icon: Calendar, color: 'text-blue-500' },
+    { key: 'howLong', icon: Clock, color: 'text-yellow-500' },
+    { key: 'whenHome', icon: Home, color: 'text-green-500' },
+    { key: 'willRecover', icon: Heart, color: 'text-pink-500' },
+    { key: 'whereAmI', icon: MapPin, color: 'text-purple-500' },
+    { key: 'whoAreYou', icon: User, color: 'text-indigo-500' },
+    { key: 'isFamily', icon: Users, color: 'text-cyan-500' }
+  ];
+
+  const handleSelect = (question: string) => {
+    speak(t(question), language);
+  };
+
+  return (
+    <Layout title={t('questions')}>
+      <div className="sv-category-grid my-6">
+        {questions.map((question) => {
+          const Icon = question.icon;
+          return (
+            <button 
+              key={question.key}
+              className="sv-option-button text-left"
+              onClick={() => handleSelect(question.key)}
+            >
+              <div className="flex flex-col items-center w-full">
+                <Icon size={36} className={`${question.color} mb-2`} />
+                <span className="text-lg font-medium text-center">{t(question.key)}</span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </Layout>
+  );
+};
+
+export default Questions;
