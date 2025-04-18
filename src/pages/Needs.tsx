@@ -37,7 +37,7 @@ const Needs = () => {
   ];
 
   const handleSelect = (need: string) => {
-    speak(need, language, need);
+    speak(t(need), language, need);
     // speak(translations[need]["th"], language, true);
   };
 
