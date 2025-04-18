@@ -14,7 +14,7 @@ interface BeliefOption {
 }
 
 const Beliefs = () => {
-  const { t, language } = useLanguage();
+  const { t, language, translations } = useLanguage();
 
   const beliefs: BeliefOption[] = [
     { key: 'wantToChant', icon: Church, color: 'text-purple-500' },
@@ -24,7 +24,8 @@ const Beliefs = () => {
   ];
 
   const handleSelect = (belief: string) => {
-    speak(t(belief), language);
+    // speak(t(belief), language);
+    speak(translations[belief]["th"], language);
   };
 
   return (
@@ -38,7 +39,7 @@ const Beliefs = () => {
               className="sv-option-button min-h-[150px]"
               onClick={() => handleSelect(belief.key)}
             >
-              <Icon size={48} className={`${belief.color} mb-3`} />
+              <img src={`beliefs/${belief.key}.png`} alt={belief.key} /> {/* Changed from Image to img */}
               <span className="text-lg font-medium">{t(belief.key)}</span>
             </button>
           );

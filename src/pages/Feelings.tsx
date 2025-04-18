@@ -12,7 +12,7 @@ interface FeelingOption {
 }
 
 const Feelings = () => {
-  const { t, language } = useLanguage();
+  const { t, language, translations } = useLanguage();
 
   const feelings: FeelingOption[] = [
     { key: 'cold', icon: Snowflake, color: 'text-blue-500' },
@@ -26,7 +26,8 @@ const Feelings = () => {
   ];
 
   const handleSelect = (feeling: string) => {
-    speak(t(feeling), language);
+    // speak(t(feeling), language);
+    speak(translations[feeling]["th"], language);
   };
 
   return (
@@ -35,12 +36,12 @@ const Feelings = () => {
         {feelings.map((feeling) => {
           const Icon = feeling.icon;
           return (
-            <button 
+            <button
               key={feeling.key}
               className="sv-option-button"
               onClick={() => handleSelect(feeling.key)}
             >
-              <Icon size={48} className={`${feeling.color} mb-2`} />
+              <img src={`feelings/${feeling.key}.png`} alt={feeling.key} /> {/* Changed from Image to img */}
               <span className="text-lg font-medium">{t(feeling.key)}</span>
             </button>
           );

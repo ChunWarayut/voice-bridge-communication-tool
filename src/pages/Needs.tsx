@@ -15,7 +15,7 @@ interface NeedOption {
 }
 
 const Needs = () => {
-  const { t, language } = useLanguage();
+  const { t, language, translations } = useLanguage();
 
   const needs: NeedOption[] = [
     { key: 'changePosition', icon: MoveHorizontal, color: 'text-purple-500' },
@@ -36,7 +36,9 @@ const Needs = () => {
   ];
 
   const handleSelect = (need: string) => {
-    speak(need, language, true);
+    // speak(need, language, true);
+
+    speak(translations[need]["th"], language, true);
   };
 
   return (
@@ -50,7 +52,7 @@ const Needs = () => {
               className="sv-option-button"
               onClick={() => handleSelect(need.key)}
             >
-              <Icon size={36} className={`${need.color} mb-2`} />
+              <img src={`needs/${need.key}.png`} alt={need.key} /> {/* Changed from Image to img */}
               <span className="text-lg font-medium">{t(need.key)}</span>
             </button>
           );

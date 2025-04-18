@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import { Heart, Smile, Lightbulb, HelpCircle, Church } from 'lucide-react';
 
 const Home = () => {
-  const { t, language } = useLanguage();
+  const { t, language, translations } = useLanguage();
   const navigate = useNavigate();
 
   // Navigate to specific category pages
@@ -30,7 +30,8 @@ const Home = () => {
     <button
       className={`sv-button ${color} w-full py-6 min-h-[160px]`}
       onClick={() => {
-        speak(t(name.toLowerCase()), language);
+        // speak(t(name.toLowerCase()), language);
+        speak(translations[name.toLowerCase()]["th"], language);
         onClick();
       }}
     >
@@ -50,9 +51,9 @@ const Home = () => {
 
   return (
     <Layout title={t('appTitle')} showBack={false}>
-      <div className="flex justify-center my-6">
+      {/* <div className="flex justify-center my-6">
         <h2 className="text-2xl font-bold">{t('selectLanguage')}</h2>
-      </div>
+      </div> */}
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
         <CategoryButton 
@@ -75,7 +76,7 @@ const Home = () => {
         />
         <CategoryButton 
           name="Questions" 
-          color="sv-button-blue" 
+          color="sv-button-primary" 
           icon={HelpCircle} 
           onClick={() => navigateToCategory('questions')} 
         />

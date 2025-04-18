@@ -14,7 +14,7 @@ interface QuestionOption {
 }
 
 const Questions = () => {
-  const { t, language } = useLanguage();
+  const { t, language, translations } = useLanguage();
 
   const questions: QuestionOption[] = [
     { key: 'whatsWrong', icon: HelpCircle, color: 'text-red-500' },
@@ -28,7 +28,8 @@ const Questions = () => {
   ];
 
   const handleSelect = (question: string) => {
-    speak(t(question), language);
+    // speak(t(question), language);
+    speak(translations[question]["th"], language);
   };
 
   return (
@@ -43,7 +44,7 @@ const Questions = () => {
               onClick={() => handleSelect(question.key)}
             >
               <div className="flex flex-col items-center w-full">
-                <Icon size={36} className={`${question.color} mb-2`} />
+                <img src={`questions/${question.key}.png`} alt={question.key} /> {/* Changed from Image to img */}
                 <span className="text-lg font-medium text-center">{t(question.key)}</span>
               </div>
             </button>

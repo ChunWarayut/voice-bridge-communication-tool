@@ -275,7 +275,7 @@ const translations: Translations = {
   },
   trustMedicalTeam: {
     en: 'I trust the medical team',
-    th: 'ฉันเ��ื่อมั่นในทีมแพทย์',
+    th: 'ฉันเชื่อมั่นในทีมแพทย์',
     my: 'ကျွန်ုပ်ဆေးဝါးကုသမှုအဖွဲ့ကိုယုံကြည်ပါသည်',
   },
   religiousRitual: {
@@ -314,10 +314,10 @@ const translations: Translations = {
     th: 'ขา',
     my: 'ခြေထောက်',
   },
-  hair: {
-    en: 'Hair',
-    th: 'ผม',
-    my: 'ဆံပင်',
+  eyebrow: {
+    en: 'Eyebrow',
+    th: 'คิ้ว',
+    my: 'မျက်ခုံးမွေး',
   },
   nose: {
     en: 'Nose',
@@ -339,16 +339,16 @@ const translations: Translations = {
     th: 'หน้าอก',
     my: 'ရင်ဘတ်',
   },
-  stomach: {
-    en: 'Stomach',
-    th: 'ท้อง',
-    my: 'ဗိုက်',
+  tongue: {
+    en: 'tongue',
+    th: 'ลิ้น',
+    my: 'လျှာ',
   },
   feet: {
     en: 'Feet',
     th: 'เท้า',
     my: 'ခြေထောက်',
-  },
+  }
 };
 
 // Define the shape of our context
