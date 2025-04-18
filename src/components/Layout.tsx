@@ -54,8 +54,11 @@ const Layout: React.FC<LayoutProps> = ({
               <ArrowLeft size={28} />
             </button>
           )}
-          
-          <h1 className="text-2xl font-bold">{title || t('appTitle')}</h1>
+
+          <img src="/logo.png" alt="Logo" className="h-20" /> {/* Adjust height as needed */}
+
+          {/* <h1 className="text-2xl font-bold">{title || t('appTitle')}</h1> */}
+
         </div>
         
         <div className="flex items-center gap-2">

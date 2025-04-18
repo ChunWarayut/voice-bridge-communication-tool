@@ -20,9 +20,9 @@ const translations: Translations = {
     my: 'အောက်ပါရွေးချယ်စရာများကို နှိပ်ခြင်းဖြင့် သင့်လိုအပ်ချက်များကို ကျွန်ုပ်တို့အား ပြောပြနိုင်ပါသည်။'
   },
   appTitle: {
-    en: 'Smart Voice',
-    th: 'สมาร์ทวอยซ์',
-    my: 'စမတ်အသံ',
+    en: 'EasyTalk',
+    th: 'EasyTalk',
+    my: 'EasyTalk',
   },
   selectLanguage: {
     en: 'Select Language',

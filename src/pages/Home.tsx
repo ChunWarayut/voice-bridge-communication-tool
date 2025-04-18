@@ -1,5 +1,5 @@
-
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
@@ -51,6 +51,15 @@ const Home = () => {
 
   return (
     <Layout title={t('appTitle')} showBack={false}>
+      <Helmet>
+        <title>EasyTalk - Communication App for Intubated Patients</title>
+        <meta name="description" content="EasyTalk is a multilingual communication app that helps intubated patients express pain, needs, and feelings using TTS and visual buttons." />
+        <meta name="keywords" content="intubated patient communication app, ICU app, hospital communication tool, multilingual TTS app, EasyTalk" />
+        <meta property="og:title" content="EasyTalk - Communication for Patients" />
+        <meta property="og:description" content="Help patients speak with ease using EasyTalk. Available in Thai, Burmese, and English." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/image.png" />
+      </Helmet>
       <div className="flex justify-center my-6">
         <button
           className={`sv-button bg-blue-500 w-full py-6 min-h-[160px]`}
