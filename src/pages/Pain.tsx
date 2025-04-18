@@ -36,7 +36,7 @@ const Pain = () => {
     } else {
       painText = 'severePain';
     }
-    speak(painText, language, painText);
+    speak(t(painText), language, painText);
     // speak(translations[painText]["th"], language, painText);
     
     setTimeout(() => {
