@@ -54,8 +54,8 @@ const Needs = () => {
                 onClick={() => handleSelect(need.key)}
               >
                 <img src={`needs/${need.key}.png`} alt={need.key} /> {/* Changed from Image to img */}
-                <span className="text-xs font-medium">{t(need.key)}</span>
-                <span className={`text-xs font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[need.key]["th"]}</span>
+                <span className="text-2xl font-medium">{t(need.key)}</span>
+                <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[need.key]["th"]}</span>
               </button>
             </BouncyButton>
           );

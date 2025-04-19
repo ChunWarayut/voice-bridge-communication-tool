@@ -47,8 +47,8 @@ const Questions = () => {
               >
                 <div className="flex flex-col items-center w-full">
                   <img src={`questions/${question.key}.png`} alt={question.key} /> {/* Changed from Image to img */}
-                  <span className="text-lg font-medium text-center">{t(question.key)}</span>
-                  <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[question.key]["th"]}</span>
+                  <span className="text-2xl font-medium text-center">{t(question.key)}</span>
+                  <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[question.key]["th"]}</span>
                 </div>
               </button>
             </BouncyButton>

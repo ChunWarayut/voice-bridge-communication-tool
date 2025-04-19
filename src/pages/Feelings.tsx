@@ -44,8 +44,8 @@ const Feelings = () => {
                 onClick={() => handleSelect(feeling.key)}
               >
                 <img src={`feelings/${feeling.key}.png`} alt={feeling.key} /> {/* Changed from Image to img */}
-                <span className="text-xs font-medium">{t(feeling.key)}</span>
-                <span className={`text-xs font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[feeling.key]["th"]}</span>
+                <span className="text-2xl font-medium">{t(feeling.key)}</span>
+                <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[feeling.key]["th"]}</span>
               </button>
             </BouncyButton>
           );

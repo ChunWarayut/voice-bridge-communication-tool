@@ -160,7 +160,7 @@ const Pain = () => {
           <>
             <h2 className="text-2xl font-bold mb-8">{t('howSevereIsYourPain')}</h2>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 w-full max-w-2xl">
               {/* No Pain (0) */}
               <button
                 onClick={() => handlePainLevelSelect(0)}
@@ -168,8 +168,8 @@ const Pain = () => {
               >
                 <Smile size={48} className="text-green-600 mb-2" />
                 <span className="text-xl font-bold">0</span>
-                <span className="text-sm">{t('noPain')}</span>
-                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['noPain']["th"]}</span>
+                <span className="text-2xl">{t('noPain')}</span>
+                <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['noPain']["th"]}</span>
               </button>
               
               {/* Mild Pain (1-3) */}
@@ -179,8 +179,8 @@ const Pain = () => {
               >
                 <SmilePlus size={48} className="text-yellow-600 mb-2" />
                 <span className="text-xl font-bold">1-3</span>
-                <span className="text-sm">{t('mildPain')}</span>
-                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['mildPain']["th"]}</span>
+                <span className="text-2xl">{t('mildPain')}</span>
+                <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['mildPain']["th"]}</span>
               </button>
               
               {/* Moderate Pain (4-6) */}
@@ -190,8 +190,8 @@ const Pain = () => {
               >
                 <Meh size={48} className="text-orange-600 mb-2" />
                 <span className="text-xl font-bold">4-6</span>
-                <span className="text-sm">{t('moderatePain')}</span>
-                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['moderatePain']["th"]}</span>
+                <span className="text-2xl">{t('moderatePain')}</span>
+                <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['moderatePain']["th"]}</span>
               </button>
               
               {/* Severe Pain (7-10) */}
@@ -201,8 +201,8 @@ const Pain = () => {
               >
                 <Frown size={48} className="text-red-600 mb-2" />
                 <span className="text-xl font-bold">7-10</span>
-                <span className="text-sm">{t('severePain')}</span>
-                <span className={`text-lg font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['severePain']["th"]}</span>
+                <span className="text-2xl">{t('severePain')}</span>
+                <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['severePain']["th"]}</span>
               </button>
             </div>
           </>

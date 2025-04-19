@@ -35,8 +35,8 @@ const Home = () => {
       }}
     >
       <Icon size={48} className="mb-3" />
-      <span className="text-xl font-semibold">{t(name.toLowerCase())}</span>
-      <span className={`text-xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[name.toLowerCase()]["th"]}</span>
+      <span className="text-2xl font-semibold">{t(name.toLowerCase())}</span>
+      <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[name.toLowerCase()]["th"]}</span>
       </button>
   );
 
@@ -62,11 +62,11 @@ const Home = () => {
       </Helmet>
       <div className="flex justify-center my-6">
         <button
-          className={`sv-button bg-blue-500 w-full py-6 min-h-[160px]`}
+          className={`sv-button bg-blue-500 w-full py-6 min-h-[160px] text-2xl `}
           onClick={() => speak(t('youCanTellUsYourNeeds'), language, 'youCanTellUsYourNeeds')}
         >
           {t('youCanTellUsYourNeeds')}
-          <span className={`text-xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['youCanTellUsYourNeeds']["th"]}</span>
+          <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations['youCanTellUsYourNeeds']["th"]}</span>
         </button>
       </div>
 
