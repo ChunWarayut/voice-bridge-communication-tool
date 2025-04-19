@@ -105,6 +105,9 @@ const Layout: React.FC<LayoutProps> = ({
       <main className="flex-1">
         {children}
       </main>
+      <footer className="text-center text-sm text-gray-400 py-2">
+        © 2025 Developed by ChunWarayut (Warayut Taekrathok)
+      </footer>
     </div>
   );
 };
