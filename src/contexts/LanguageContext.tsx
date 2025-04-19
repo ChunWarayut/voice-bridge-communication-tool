@@ -196,10 +196,30 @@ const translations: Translations = {
     th: 'เปลี่ยนเสื้อผ้า',
     my: 'အဝတ်အစားလဲချင်သည်',
   },
+  adjustBedHeight: {
+    en: 'Adjust head of bed height',
+    th: 'ปรับหัวเตียงสูง',
+    my: 'ကုတင်ဦးခေါင်းကို အမြင့်ကို ညှိပါ။',
+  },
+  adjustBedLow: {
+    en: 'Adjustable headboard low',
+    th: 'ปรับหัวเตียงต่ำ',
+    my: 'ကုတင်ခေါင်းကို နိမ့်အောင်ညှိပါ။',
+  },
+  adjustBedRight: {
+    en: 'Right side tilt',
+    th: 'ตะแคงขวา',
+    my: 'ညာဘက်စောင်း',
+  },
+  adjustBedLeft: {
+    en: 'Left side tilt',
+    th: 'ตะแคงซ้าย',
+    my: 'ဘယ်ဘက်သို့ စောင်းပါ။',
+  },
   adjustBed: {
-    en: 'Adjust Bed',
-    th: 'ปรับเตียง',
-    my: 'အိပ်ရာညှိပါ',
+    en: 'Lie on your back',
+    th: 'นอนหงาย',
+    my: 'ပက်လက်အိပ်ပါ။',
   },
   suction: {
     en: 'Suction',

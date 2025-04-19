@@ -19,7 +19,11 @@ const Needs = () => {
   const { t, language, translations } = useLanguage();
 
   const needs: NeedOption[] = [
-    { key: 'changePosition', icon: MoveHorizontal, color: 'text-purple-500' },
+    { key: 'adjustBed', icon: MoveHorizontal, color: 'text-purple-500' },
+    { key: 'adjustBedLeft', icon: MoveHorizontal, color: 'text-purple-500' },
+    { key: 'adjustBedRight', icon: MoveHorizontal, color: 'text-purple-500' },
+    { key: 'adjustBedLow', icon: MoveHorizontal, color: 'text-purple-500' },
+    { key: 'adjustBedHeight', icon: MoveHorizontal, color: 'text-purple-500' },
     { key: 'blanket', icon: Bed, color: 'text-blue-300' },
     { key: 'seeRelatives', icon: Users, color: 'text-green-500' },
     { key: 'drinkWater', icon: GlassWater, color: 'text-blue-500' },
@@ -28,7 +32,6 @@ const Needs = () => {
     { key: 'turnLights', icon: Lightbulb, color: 'text-yellow-400' },
     { key: 'goHome', icon: Home, color: 'text-green-600' },
     { key: 'changeClothes', icon: Shirt, color: 'text-indigo-500' },
-    { key: 'adjustBed', icon: Minimize2, color: 'text-gray-500' },
     { key: 'suction', icon: Spline, color: 'text-teal-500' },
     { key: 'urinate', icon: Droplet, color: 'text-yellow-300' },
     { key: 'defecate', icon: Bath, color: 'text-brown-500' },
