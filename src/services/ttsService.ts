@@ -36,9 +36,8 @@ const getBestVoiceForLanguage = (lang: SupportedLanguage): SpeechSynthesisVoice 
 // Main speak function
 export const speak = (text: string, language: SupportedLanguage, key: string): void => {
 
-  if (language === 'my') {
-    const sanitizedText = text.replace(/\s+/g, '_').toLowerCase();
-    const audio = new Audio(`/audio/my/${key}.mp3`);
+  if (language === 'my' || language === 'th') {
+    const audio = new Audio(`/audio/${language}/${key}.mp3`);
     audio.play();
     return;
   }
