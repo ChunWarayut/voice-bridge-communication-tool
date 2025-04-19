@@ -172,8 +172,8 @@ const translations: Translations = {
     my: 'ရေသောက်ချင်သည်',
   },
   eat: {
-    en: 'Eat',
-    th: 'กิน',
+    en: 'Hungry',
+    th: 'หิวข้าว',
     my: 'စားချင်သည်',
   },
   seeDoctor: {
