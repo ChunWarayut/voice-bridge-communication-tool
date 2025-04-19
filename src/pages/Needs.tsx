@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
@@ -17,6 +17,7 @@ interface NeedOption {
 
 const Needs = () => {
   const { t, language, translations } = useLanguage();
+  const [screenName, setScreenName] = useState<string>();
 
   const needs: NeedOption[] = [
     { key: 'adjustBed', icon: MoveHorizontal, color: 'text-purple-500' },
@@ -40,12 +41,13 @@ const Needs = () => {
   ];
 
   const handleSelect = (need: string) => {
+    setScreenName(`${t(need)}`)
     speak(t(need), language, need);
     // speak(translations[need]["th"], language, true);
   };
 
   return (
-    <Layout title={t('needs')}>
+    <Layout title={t('needs')} screenName={screenName}>
       <div className="sv-category-grid my-6">
         {needs.map((need) => {
           const Icon = need.icon;

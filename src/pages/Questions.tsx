@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
@@ -16,6 +16,7 @@ interface QuestionOption {
 
 const Questions = () => {
   const { t, language, translations } = useLanguage();
+  const [screenName, setScreenName] = useState<string>();
 
   const questions: QuestionOption[] = [
     { key: 'whatsWrong', icon: HelpCircle, color: 'text-red-500' },
@@ -29,12 +30,13 @@ const Questions = () => {
   ];
 
   const handleSelect = (question: string) => {
+    setScreenName(`${t(question)}`)
     speak(t(question), language, question);
     // speak(translations[question]["th"], language);
   };
 
   return (
-    <Layout title={t('questions')}>
+    <Layout title={t('questions')} screenName={screenName}>
       <div className="sv-category-grid my-6">
         {questions.map((question) => {
           const Icon = question.icon;

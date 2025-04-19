@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
@@ -16,6 +16,7 @@ interface BeliefOption {
 
 const Beliefs = () => {
   const { t, language, translations } = useLanguage();
+  const [screenName, setScreenName] = useState<string>();
 
   const beliefs: BeliefOption[] = [
     { key: 'wantToChant', icon: Church, color: 'text-purple-500' },
@@ -25,12 +26,13 @@ const Beliefs = () => {
   ];
 
   const handleSelect = (belief: string) => {
+    setScreenName(`${t(belief)}`)
     speak(t(belief), language, belief);
     // speak(translations[belief]["th"], language);
   };
 
   return (
-    <Layout title={t('beliefs')}>
+    <Layout title={t('beliefs')} screenName={screenName}>
       <div className="sv-category-grid my-6">
         {beliefs.map((belief) => {
           const Icon = belief.icon;

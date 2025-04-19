@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
@@ -14,6 +14,7 @@ interface FeelingOption {
 
 const Feelings = () => {
   const { t, language, translations } = useLanguage();
+  const [screenName, setScreenName] = useState<string>();
 
   const feelings: FeelingOption[] = [
     { key: 'cold', icon: Snowflake, color: 'text-blue-500' },
@@ -27,12 +28,13 @@ const Feelings = () => {
   ];
 
   const handleSelect = (feeling: string) => {
+    setScreenName(`${t(feeling)}`)
     speak(t(feeling), language, feeling);
     // speak(translations[feeling]["th"], language);
   };
 
   return (
-    <Layout title={t('feelings')}>
+    <Layout title={t('feelings')} screenName={screenName}>
       <div className="sv-category-grid my-6">
         {feelings.map((feeling) => {
           const Icon = feeling.icon;

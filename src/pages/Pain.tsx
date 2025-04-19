@@ -18,6 +18,7 @@ const Pain = () => {
   const [selectedPart, setSelectedPart] = useState<BodyPart>(null);
   const [painLevel, setPainLevel] = useState<number | null>(null);
   const [step, setStep] = useState<'bodyMap' | 'painScale'>('bodyMap');
+  const [screenName, setScreenName] = useState<string>();
 
 
   const pains: PainOption[] = [
@@ -41,6 +42,7 @@ const Pain = () => {
     setSelectedPart(part);
     setStep('painScale');
     speak(t(part), language, part);
+    setScreenName(`${t(part)}`)
 
     // speak(translations[part]["th"], language);
   };
@@ -60,6 +62,7 @@ const Pain = () => {
       painText = 'severePain';
     }
     speak(t(painText), language, painText);
+    setScreenName(`${t(selectedPart)} - ${t(painText)}`)
     // speak(translations[painText]["th"], language, painText);
     
     setTimeout(() => {
@@ -70,7 +73,7 @@ const Pain = () => {
   };
 
   return (
-    <Layout title={t('pain')}>
+    <Layout title={t('pain')} screenName={screenName}>
       <div className="flex flex-col items-center my-6">
         {step === 'bodyMap' ? (
           <>

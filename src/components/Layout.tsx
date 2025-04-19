@@ -1,5 +1,6 @@
 
 import React, { ReactNode } from 'react';
+import { Helmet } from 'react-helmet';
 import { ArrowLeft, Globe, Home } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage, SupportedLanguage } from '../contexts/LanguageContext';
@@ -13,6 +14,7 @@ import {
 interface LayoutProps {
   children: ReactNode;
   title?: string;
+  screenName?: string;
   showBack?: boolean;
   showHome?: boolean;
 }
@@ -20,6 +22,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ 
   children, 
   title, 
+  screenName,
   showBack = true,
   showHome = true
 }) => {
@@ -44,6 +47,19 @@ const Layout: React.FC<LayoutProps> = ({
   return (
     <div className="sv-page pb-20">
       <header className="sv-header sticky top-0 z-10 bg-white border-b pb-2">
+
+
+        <Helmet>
+          <title>{title || ''} {screenName ? '-' : ''} {screenName || ''} - EasyTalk - Communication App for Intubated Patients</title>
+          <meta name="description" content="EasyTalk is a multilingual communication app that helps intubated patients express pain, needs, and feelings using TTS and visual buttons." />
+          <meta name="keywords" content="intubated patient communication app, ICU app, hospital communication tool, multilingual TTS app, EasyTalk" />
+          <meta property="og:title" content="EasyTalk - Communication for Patients" />
+          <meta property="og:description" content="Help patients speak with ease using EasyTalk. Available in Thai, Burmese, and English." />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="/image.png" />
+        </Helmet>
+
+
         <div className="flex items-center gap-2">
           {showBack && !isRootPath && (
             <button 
@@ -56,8 +72,7 @@ const Layout: React.FC<LayoutProps> = ({
           )}
 
           <img src="/logo.png" alt="Logo" className="h-20" /> {/* Adjust height as needed */}
-
-          {/* <h1 className="text-2xl font-bold">{title || t('appTitle')}</h1> */}
+          {title} {screenName ? '-' : ''} {screenName}
 
         </div>
         
