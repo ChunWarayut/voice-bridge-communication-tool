@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
+# Smart Voice – A Smart Communication Tool for Intubated Patients
 
-## Project info
+## Developer
 
-**URL**: https://lovable.dev/projects/5fca6518-65b0-40f5-95b8-4c179bdac920
+Developed by **ChunWarayut (Warayut Taekrathok)** – 2025
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Project Description
 
-**Use Lovable**
+**Smart Voice** is a communication app designed specifically for intubated patients who are unable to speak. It allows patients to express their needs, feelings, and questions through a touchscreen interface that combines **images**, **text**, and **Text-to-Speech (TTS)**. The app supports **three languages**: Thai, Burmese, and English.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5fca6518-65b0-40f5-95b8-4c179bdac920) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Key Features & Flow
 
-**Use your preferred IDE**
+### ✅ Language Selection Page
+- Users can choose between **Thai**, **Burmese**, and **English**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### ✅ Home Screen
+- Displays 5 main categories as large, touch-friendly buttons:
+  1. **Pain**
+  2. **Feelings**
+  3. **Needs**
+  4. **Questions**
+  5. **Beliefs**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🔹 Category 1: Pain
+- Interactive **body map** for selecting pain location
+- Pain severity using **Numeric Rating Scale (NRS)**:
+  - 0 = No pain
+  - 1–3 = Mild pain
+  - 4–6 = Moderate pain
+  - 7–10 = Severe pain
+- Each level includes icon illustration
 
+## 🔹 Category 2: Feelings
+- Each option includes **image**, **text**, and **voice playback**:
+  1. Cold
+  2. Hot
+  3. Tired
+  4. Scared
+  5. Itchy
+  6. Dizzy
+  7. Nauseous
+  8. Thank you
+
+## 🔹 Category 3: Needs
+- Each option includes **image**, **text**, and **voice playback**
+- Examples:  
+  Change position, Blanket, See relatives, Drink water, Eat, See doctor, Turn lights on/off, Go home, Change clothes, Adjust bed, Suction, Urinate, Defecate, Untie hands, Remove breathing tube
+
+## 🔹 Category 4: Patient Questions
+- Example questions:
+  - What’s wrong with me?
+  - What day is it today?
+  - How long will I be treated?
+  - When can I go home?
+  - Will I recover?
+  - Where am I?
+  - Who are you?
+  - Is my family outside?
+
+## 🔹 Category 5: Beliefs
+- Example statements:
+  - I want to chant
+  - Listen to Dhamma
+  - I trust the medical team
+  - I want to perform a religious ritual
+
+---
+
+## ✅ Technical Requirements
+
+- Text-to-Speech output in selected language
+- Language switch available on all screens
+- Clear, simple, **touch-friendly UI**
+- **Responsive design** for mobile & tablet
+- Easily extensible content system
+
+---
+
+## Technologies Used
+
+- React (Next.js + TypeScript)
+- Tailwind CSS
+- shadcn-ui
+- Text-to-Speech Web API
+- i18n (Multilingual support)
+
+---
+
+## Development & Deployment
+
+You can edit this project directly on [Lovable](https://lovable.dev/projects/5fca6518-65b0-40f5-95b8-4c179bdac920) or use your own IDE:
+
+### To run locally:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+cd smart-voice
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Deploy:
+On Lovable: Share → Publish  
+Or manually via Vercel, Netlify, etc.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Custom Domain
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Yes! You can connect your custom domain in:  
+**Project → Settings → Domains → Connect Domain**
 
-## What technologies are used for this project?
+More info: [Lovable Docs – Custom Domains](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📱 Access the App via QR Code
 
-## How can I deploy this project?
+Scan the QR code below to open the app directly:
 
-Simply open [Lovable](https://lovable.dev/projects/5fca6518-65b0-40f5-95b8-4c179bdac920) and click on Share -> Publish.
+![Smart Voice QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://easy-talk-phi.vercel.app/)
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+**URL:** [https://easy-talk-phi.vercel.app/](https://easy-talk-phi.vercel.app/)
