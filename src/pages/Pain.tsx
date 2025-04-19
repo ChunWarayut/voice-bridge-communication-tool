@@ -3,15 +3,38 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { speak } from '../services/ttsService';
 import Layout from '../components/Layout';
 import { Frown, Meh, SmilePlus, Smile } from 'lucide-react';
+import BouncyButton from '@/components/BouncyButton';
 
 // Define the body parts that can be selected
 type BodyPart = 'head' | 'eye' | 'ear' | 'arm' | 'hand' | 'leg' | 'eyebrow' | 'nose' | 'mouth' | 'neck' | 'chest' | 'tongue' | 'feet' | null;
+
+interface PainOption {
+  key: BodyPart;
+  color: string;
+}
 
 const Pain = () => {
   const { t, language, translations } = useLanguage();
   const [selectedPart, setSelectedPart] = useState<BodyPart>(null);
   const [painLevel, setPainLevel] = useState<number | null>(null);
   const [step, setStep] = useState<'bodyMap' | 'painScale'>('bodyMap');
+
+
+  const pains: PainOption[] = [
+    { key: 'head', color: 'text-red-500' },
+    { key: 'eye', color: 'text-blue-500' },
+    { key: 'ear', color: 'text-yellow-500' },
+    { key: 'arm', color: 'text-green-500' },
+    { key: 'hand', color: 'text-pink-500' },
+    { key: 'leg', color: 'text-purple-500' },
+    { key: 'eyebrow', color: 'text-indigo-500' },
+    { key: 'nose', color: 'text-cyan-500' },
+    { key: 'mouth', color: 'text-cyan-500' },
+    { key: 'neck', color: 'text-cyan-500' },
+    { key: 'chest', color: 'text-cyan-500' },
+    { key: 'tongue', color: 'text-cyan-500' },
+    { key: 'feet', color: 'text-cyan-500' }
+  ];
 
   // Handle body part selection
   const handlePartSelect = (part: BodyPart) => {
@@ -52,108 +75,25 @@ const Pain = () => {
         {step === 'bodyMap' ? (
           <>
             <h2 className="text-2xl font-bold mb-8">{t('whereIsYourPain')}</h2>
-            
-            <div className="w-full max-w-md relative">
-              <img 
-                src="/lovable-uploads/65f01617-6996-435e-beb0-c30080a4f251.png" 
-                alt="Body map" 
-                className="w-full h-auto"
-              />
-              
-              {/* Interactive regions for each body part */}
-              <div className="absolute inset-0">
-                {/* Head region */}
-                <button 
-                  onClick={() => handlePartSelect('head')}
-                  className="absolute top-[12%] left-[5%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('head')} // Added aria-label
-                />
-                
-                {/* Eye region */}
-                <button
-                  onClick={() => handlePartSelect('eye')}
-                  className="absolute top-[27%] left-[5%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('eye')} // Added aria-label
-                />
-                
-                {/* Ear region */}
-                <button
-                  onClick={() => handlePartSelect('ear')}
-                  className="absolute top-[42%] left-[5%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('ear')} // Added aria-label
-                />
 
-                {/* Left arm region */}
-                <button
-                  onClick={() => handlePartSelect('arm')}
-                  className="absolute top-[56%] left-[5%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('arm')} // Added aria-label
-                />
-                
-                {/* Left hand region */}
-                <button
-                  onClick={() => handlePartSelect('hand')}
-                  className="absolute top-[71%] left-[5%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('hand')} // Added aria-label
-                />
-                
-                {/* Legs region */}
-                <button
-                  onClick={() => handlePartSelect('leg')}
-                  className="absolute bottom-[0%] left-[5%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('leg')} // Added aria-label
-                />
-
-                {/* Feet region */}
-                <button
-                  onClick={() => handlePartSelect('feet')}
-                  className="absolute bottom-[0%] right-[15%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('feet')} // Added aria-label
-                />
-
-                {/* Neck region */}
-                <button
-                  onClick={() => handlePartSelect('neck')}
-                  className="absolute bottom-[15%] right-[15%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('neck')} // Added aria-label
-                />
-                
-                {/* Tongue region */}
-                <button
-                  onClick={() => handlePartSelect('tongue')}
-                  className="absolute bottom-[30%] right-[15%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('tongue')} // Added aria-label
-                />
-                
-                {/* Mouth region */}
-                <button
-                  onClick={() => handlePartSelect('mouth')}
-                  className="absolute bottom-[45%] right-[15%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('mouth')} // Added aria-label
-                />
-
-                {/* Nose region */}
-                <button
-                  onClick={() => handlePartSelect('nose')}
-                  className="absolute bottom-[60%] right-[15%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('nose')} // Added aria-label
-                />
-
-                {/* Eyebrow region */}
-                <button 
-                  onClick={() => handlePartSelect('eyebrow')}
-                  className="absolute bottom-[75%] right-[15%] w-[25%] h-[15%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('eyebrow')} // Added aria-label
-                />
-                
-                {/* Chest region */}
-                <button
-                  onClick={() => handlePartSelect('chest')}
-                  className="absolute top-[50%] right-[50%] w-[11%] h-[7%] hover:bg-red-200 rounded-full opacity-50 hover:opacity-75"
-                  aria-label={t('chest')} // Added aria-label
-                />
-                
-              </div>
+            <div className="sv-category-grid my-6">
+              {pains.map((pain) => {
+                return (
+                  <BouncyButton>
+                    <button
+                      key={pain.key}
+                      className="sv-option-button text-left"
+                      onClick={() => handlePartSelect(pain.key)}
+                    >
+                      <div className="flex flex-col items-center w-full">
+                        <img src={`pains/${pain.key}.png`} alt={pain.key} /> {/* Changed from Image to img */}
+                        <span className="text-2xl font-medium text-center">{t(pain.key)}</span>
+                        <span className={`text-2xl font-medium ${language === 'th' ? 'hidden' : 'block'}`}>{translations[pain.key]["th"]}</span>
+                      </div>
+                    </button>
+                  </BouncyButton>
+                );
+              })}
             </div>
           </>
         ) : (
