@@ -72,8 +72,8 @@ const Layout: React.FC<LayoutProps> = ({
           )}
 
           <img src="/logo.png" alt="Logo" className="h-20" /> {/* Adjust height as needed */}
-          {title} {screenName ? '-' : ''} {screenName}
-
+          
+          <span className="text-xs">{title} {screenName ? '-' : ''} {screenName}</span>
         </div>
         
         <div className="flex items-center gap-2">

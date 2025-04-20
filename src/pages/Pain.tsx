@@ -6,7 +6,7 @@ import { Frown, Meh, SmilePlus, Smile } from 'lucide-react';
 import BouncyButton from '@/components/BouncyButton';
 
 // Define the body parts that can be selected
-type BodyPart = 'head' | 'eye' | 'ear' | 'arm' | 'hand' | 'leg' | 'eyebrow' | 'nose' | 'mouth' | 'neck' | 'chest' | 'tongue' | 'feet' | null;
+type BodyPart = 'head' | 'eye' | 'ear' | 'arm' | 'hand' | 'leg' | 'eyebrow' | 'nose' | 'mouth' | 'neck' | 'chest' | 'tongue' | 'feet' | 'stomach' | 'genital' | null;
 
 interface PainOption {
   key: BodyPart;
@@ -34,7 +34,9 @@ const Pain = () => {
     { key: 'neck', color: 'text-cyan-500' },
     { key: 'chest', color: 'text-cyan-500' },
     { key: 'tongue', color: 'text-cyan-500' },
-    { key: 'feet', color: 'text-cyan-500' }
+    { key: 'feet', color: 'text-cyan-500' },
+    { key: 'stomach', color: 'text-cyan-500' },
+    { key: 'genital', color: 'text-cyan-500' }
   ];
 
   // Handle body part selection

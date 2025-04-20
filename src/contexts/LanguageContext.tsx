@@ -373,6 +373,16 @@ const translations: Translations = {
     en: 'Feet',
     th: 'เท้า',
     my: 'ခြေထောက်',
+  },
+  stomach: {
+    en: 'Stomach',
+    th: 'ท้อง',
+    my: 'ဗိုက်နာသည်',
+  },
+  genital: {
+    en: 'Genital',
+    th: 'อวัยวะเพศสืบพันธุ์',
+    my: 'လိင်အင်္ဂါ နာကျင်ခြင်း။',
   }
 };
 
