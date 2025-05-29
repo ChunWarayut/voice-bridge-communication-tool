@@ -15,7 +15,7 @@ const LanguageSelection = () => {
 
   return (
     <Layout showBack={false} showHome={false}>
-      <div className="flex flex-col items-center justify-center h-[80vh] gap-8">
+      <div className="flex flex-col items-center justify-center gap-8">
         <h1 className="text-4xl font-bold text-center mb-8">{t('selectLanguage')}</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-2xl">
